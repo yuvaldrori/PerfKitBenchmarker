@@ -88,6 +88,7 @@ def Prepare(benchmark_spec):
                                   '& echo $!') % IPERF_PORT)
     # TODO store this in a better place once we have a better place
     vm.iperf3_server_pid = stdout.strip()
+    stdout, _ = vm.RemoteCommand('sysctl -a')
 
 
 @vm_util.Retry(max_retries=IPERF_RETRIES)
